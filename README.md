@@ -22,15 +22,16 @@ It should be safe to even uninstall the mod without losing the saved layouts.
 ### Commands  
 Use `/option SlotAndFound_Save true` to save current layout  
 Use `/option SlotAndFound_Load true` to load saved layout  
-Use `/option SlotAndFound_List true` to list all saved layouts    
-Use `/option SlotAndFound_Delete true` to delete last saved layout    
-By default all commands use your characters name as the save key, but you can also override it by supplying a string
-e.g
-`/option SlotAndFound_Save "backup"` -- Save current inventory layout to "backup"
-`/option SlotAndFound_Load "AltAccount"` -- Load inventory layout that was saved as "AltAccount"
-`/option SlotAndFound_Save "backup2"` -- Save the just loaded layout to "backup2"
-`/option SlotAndFound_Load "backup"` -- Load the original layout
-`/option SlotAndFound_Delete "backup"` -- Delete "backup" layout
+Use `/option SlotAndFound_List true` to list all saved layouts  
+Use `/option SlotAndFound_Delete true` to delete last saved layout  
+
+By default all commands use your characters name as the save key, but you can also override it by supplying a string  
+e.g  
+`/option SlotAndFound_Save "backup"` -- Save current inventory layout to "backup"  
+`/option SlotAndFound_Load "AltAccount"` -- Load inventory layout that was saved as "AltAccount"  
+`/option SlotAndFound_Save "backup2"` -- Save the just loaded layout to "backup2"  
+`/option SlotAndFound_Load "backup"` -- Load the original layout  
+`/option SlotAndFound_Delete "backup"` -- Delete "backup" layout  
 
  
 ### Install

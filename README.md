@@ -35,4 +35,5 @@ e.g
 
  
 ### Install
-Extract to `Secret World Legends\Data\Gui\Custom\Flash`
+Extract to `Secret World Legends\Data\Gui\Custom\Flash`  
+.swf file path should be `..\Secret World Legends\Data\Gui\Custom\Flash\SlotAndFound\SlotAndFound.swf`

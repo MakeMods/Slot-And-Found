@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Root>
+  <Module  name = "SlotAndFound"
+    movie       = "SlotAndFound\SlotAndFound.swf"
+    flags       = ""
+    depth_layer = "Top"
+    sub_depth   = "2"
+	variable 	= "SlotAndFound"
+    criteria    = "(SlotAndFound_Save != false || SlotAndFound_Load != false) &amp;&amp; (guimode &amp; (GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI))"
+  />
+</Root>

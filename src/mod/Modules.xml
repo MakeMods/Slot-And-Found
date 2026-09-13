@@ -6,6 +6,6 @@
     depth_layer = "Top"
     sub_depth   = "2"
 	variable 	= "SlotAndFound"
-    criteria    = "(SlotAndFound_Save != false || SlotAndFound_Load != false) &amp;&amp; (guimode &amp; (GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI))"
+    criteria    = "(SlotAndFound_Save != false || SlotAndFound_Load != false || SlotAndFound_List != false || SlotAndFound_Delete != false) &amp;&amp; (guimode &amp; (GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI))"
   />
 </Root>

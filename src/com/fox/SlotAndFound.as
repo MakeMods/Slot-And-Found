@@ -15,6 +15,8 @@ class com.fox.SlotAndFound
 {
 	public var DValLoad:DistributedValue;
 	public var DValSave:DistributedValue;
+	public var DValList:DistributedValue;
+	public var DValDelete:DistributedValue;
 	public var DValStorage:DistributedValue;
 	static var QuestBoxName:String = LDBFormat.Printf(LDBFormat.LDBGetText("GenericGUI",  "QuestInventoryWindowTitle"));
 	
@@ -31,6 +33,8 @@ class com.fox.SlotAndFound
 	public function SlotAndFound() {
 		DValLoad = DistributedValue.Create("SlotAndFound_Load")
 		DValSave = DistributedValue.Create("SlotAndFound_Save")
+		DValList = DistributedValue.Create("SlotAndFound_List")
+		DValDelete = DistributedValue.Create("SlotAndFound_Delete")
 		DValStorage = DistributedValue.Create("Storage_SlotAndFound")
 	}
 	
@@ -38,10 +42,39 @@ class com.fox.SlotAndFound
 	{
 		if (DValSave.GetValue()) SaveInventory();
 		if (DValLoad.GetValue()) LoadInventory();
+		if (DValList.GetValue()) ListConfigs();
+		if (DValDelete.GetValue()) DeleteConfig();
 		
 		DValSave.SetValue(false);
 		DValLoad.SetValue(false);
+		DValList.SetValue(false);
+		DValDelete.SetValue(false);
 		SFClipLoader.UnloadClip("slotandfound\\slotandfound");
+	}
+	
+	public function ListConfigs()
+	{
+		var config:Archive = DValStorage.GetValue();
+		for (var i in config["m_Dictionary"])
+		{
+			var count = 0;
+			for (var y in config.FindEntry(i)["m_Dictionary"] )
+			{
+				count += 1;
+			}
+			com.GameInterface.UtilsBase.PrintChatText(i + ": " + count + " Inventory bags");
+		}
+	}
+	
+	public function DeleteConfig()
+	{
+		var config:Archive = DValStorage.GetValue();
+		var deleteValue = DValDelete.GetValue();
+		if (deleteValue == true || deleteValue == 1) deleteValue = Character.GetClientCharacter().GetName();
+		
+		com.GameInterface.UtilsBase.PrintChatText("Deleted config for " + deleteValue);
+		config.DeleteEntry(deleteValue);
+		DValStorage.SetValue(config);
 	}
 	
 	public function Unload()
@@ -88,8 +121,7 @@ class com.fox.SlotAndFound
 		var boxes:Array = inventory.m_IconBoxes;
 		if (!inventory.m_ModuleActivated) return;
 		
-		var optionValue = DValSave.GetValue();
-		var saveName = optionValue;
+		var saveName = DValSave.GetValue();
 		if (saveName == true || saveName == 1) saveName = Character.GetClientCharacter().GetName();
 		
 		// Get all items and their positions
@@ -204,8 +236,7 @@ class com.fox.SlotAndFound
 		if (!inventory.m_ModuleActivated) return;
 		var inventoryID:ID32 = inventory.m_Inventory.GetInventoryID();
 		var boxes:Array = inventory.m_IconBoxes;
-		var optionValue = DValLoad.GetValue();
-		var loadName = optionValue;
+		var loadName = DValLoad.GetValue();
 		if (loadName == true || loadName == 1) loadName = Character.GetClientCharacter().GetName();
 
 		var config:Archive = storage.FindEntry(loadName, undefined);

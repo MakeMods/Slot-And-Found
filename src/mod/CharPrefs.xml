@@ -2,4 +2,6 @@
 <Root>
 	<Value name="SlotAndFound_Save" value="false" />
 	<Value name="SlotAndFound_Load" value="false" />
+	<Value name="SlotAndFound_List" value="false" />
+	<Value name="SlotAndFound_Delete" value="false" />
 </Root>
